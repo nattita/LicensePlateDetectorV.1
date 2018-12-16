@@ -2,11 +2,11 @@ from skimage.io import imread
 from skimage.filters import threshold_otsu
 import matplotlib.pyplot as plt
 
-filename = './video12.mp4'
+# filename = './video12.mp4'
 
 import cv2
-cap = cv2.VideoCapture(filename)
-# cap = cv2.VideoCapture(0)
+# cap = cv2.VideoCapture(filename)
+cap = cv2.VideoCapture(1)
 count = 0
 while cap.isOpened():
     ret,frame = cap.read()
@@ -57,8 +57,8 @@ label_image = measure.label(binary_car_image)
 # print(label_image.shape[0]) #width of car img
 
 # getting the maximum width, height and minimum width and height that a license plate can be
-plate_dimensions = (0.03*label_image.shape[0], 0.08*label_image.shape[0], 0.15*label_image.shape[1], 0.3*label_image.shape[1])
-plate_dimensions2 = (0.08*label_image.shape[0], 0.2*label_image.shape[0], 0.15*label_image.shape[1], 0.4*label_image.shape[1])
+plate_dimensions = (1.0*label_image.shape[0], 4.6*label_image.shape[0], 0.1*label_image.shape[1], 0.4*label_image.shape[1])
+plate_dimensions2 = (0.2*label_image.shape[0], 0.4*label_image.shape[0], 0.2*label_image.shape[1], 0.45*label_image.shape[1])
 min_height, max_height, min_width, max_width = plate_dimensions
 plate_objects_cordinates = []
 plate_like_objects = []
@@ -126,7 +126,6 @@ if(flag==0):
         region_width = max_col - min_col
         # print(region_height)
         # print(region_width)
-
         # ensuring that the region identified satisfies the condition of a typical license plate
         if region_height >= min_height and region_height <= max_height and region_width >= min_width and region_width <= max_width and region_width > region_height:
             # print("hello")

@@ -7,9 +7,8 @@ from skimage.io import imread
 from skimage.filters import threshold_otsu
 
 letters = [
-            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D',
-            'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T',
-            'U', 'V', 'W', 'X', 'Y', 'Z'
+            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'ก', 'ข', 'ค', 'ฆ',
+            'ง', 'จ', 'ฉ', 'ช', 'ฌ', 'ญ'
         ]
 
 def read_training_data(training_directory):
@@ -50,7 +49,7 @@ def cross_validation(model, num_of_fold, train_data, train_label):
 #
 # training_dataset_dir = os.path.join(current_dir, 'train')
 print('reading data')
-training_dataset_dir = 'C:/Users/Apoorva/PycharmProjects/LicensePlateDetector/train20X20'
+training_dataset_dir = 'C:/Users/asus/LicensePlateDetector/train20X20/'
 image_data, target_data = read_training_data(training_dataset_dir)
 print('reading data completed')
 
@@ -76,6 +75,6 @@ svc_model.fit(image_data, target_data)
 
 import pickle
 print("model trained.saving model..")
-filename = 'C:/Users/Apoorva/PycharmProjects/LicensePlateDetector/finalized_model.sav'
+filename = 'C:/Users/asus/LicensePlateDetector/finalized_model.sav'
 pickle.dump(svc_model, open(filename, 'wb'))
 print("model saved")
